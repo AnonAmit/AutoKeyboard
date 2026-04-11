@@ -66,7 +66,7 @@ class QwenProvider(
         val prompt = LocalPromptTemplates.buildQwenPrompt(input, tone, customPrompt)
         bridge.generateStreaming(prompt, 512, 0.7f) { token -> trySend(token) }
         close()
-        kotlinx.coroutines.channels.awaitClose { }
+        awaitClose { }
     }.flowOn(Dispatchers.Default)
 
     override suspend fun suggestEmojis(input: String, tone: Tone) =
