@@ -49,6 +49,46 @@ enum class Tone(
         emoji = "🎩",
         systemPromptFragment = "Rewrite in a highly formal, dignified tone. Use sophisticated vocabulary and structured sentences."
     ),
+    CONCISE(
+        displayName = "Concise",
+        emoji = "🎯",
+        systemPromptFragment = "Rewrite this to be as short and direct as possible. Remove fluff, keep only the core message."
+    ),
+    ENTHUSIASTIC(
+        displayName = "Enthusiastic",
+        emoji = "🤩",
+        systemPromptFragment = "Rewrite this with high energy and enthusiasm! Use exclamation marks and optimistic language."
+    ),
+    SARCASTIC(
+        displayName = "Sarcastic",
+        emoji = "🙃",
+        systemPromptFragment = "Rewrite this with a heavy dose of sarcasm and irony. Make it dry and mocking."
+    ),
+    CONFIDENT(
+        displayName = "Confident",
+        emoji = "😎",
+        systemPromptFragment = "Rewrite this to sound extremely confident, authoritative, and assured."
+    ),
+    EMPATHETIC(
+        displayName = "Empathetic",
+        emoji = "🤍",
+        systemPromptFragment = "Rewrite this to be deeply empathetic, understanding, and kind."
+    ),
+    PERSUASIVE(
+        displayName = "Persuasive",
+        emoji = "🗣️",
+        systemPromptFragment = "Rewrite this to be highly persuasive and convincing, using strong rhetorical techniques."
+    ),
+    PASSIVE_AGGRESSIVE(
+        displayName = "Passive Agg.",
+        emoji = "☕",
+        systemPromptFragment = "Rewrite this to be passive-aggressive. Sound polite on the surface but clearly annoyed underneath."
+    ),
+    PIRATE(
+        displayName = "Pirate",
+        emoji = "🏴‍☠️",
+        systemPromptFragment = "Rewrite this like a stereotype of an 18th-century pirate. Throw in some 'arrs' and pirate slang."
+    ),
     CUSTOM(
         displayName = "Custom",
         emoji = "✨",
