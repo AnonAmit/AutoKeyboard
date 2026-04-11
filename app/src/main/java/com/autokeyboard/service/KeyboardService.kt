@@ -148,6 +148,7 @@ class KeyboardService : InputMethodService(), LifecycleOwner, androidx.savedstat
     }
 
     override fun onDestroy() {
+        viewModel.clear()
         lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         super.onDestroy()
     }

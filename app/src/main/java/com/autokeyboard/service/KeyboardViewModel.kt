@@ -1,12 +1,13 @@
 package com.autokeyboard.service
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.autokeyboard.data.local.PreferencesManager
 import com.autokeyboard.data.model.RewriteState
 import com.autokeyboard.data.model.Tone
 import com.autokeyboard.data.provider.RewriteRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,11 +16,15 @@ import javax.inject.Inject
  * ViewModel for the keyboard. Manages UI state, tone selection,
  * and coordinates rewrite operations.
  */
-@HiltViewModel
 class KeyboardViewModel @Inject constructor(
     private val rewriteRepository: RewriteRepository,
     private val preferencesManager: PreferencesManager
-) : ViewModel() {
+) {
+    private val coroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+
+    fun clear() {
+        coroutineScope.cancel()
+    }
 
     // ═══ Keyboard Mode ═══
     enum class KeyboardMode { TYPING, TONE_SELECT, REWRITE_RESULTS, EMOJI_STRIP }
@@ -55,12 +60,12 @@ class KeyboardViewModel @Inject constructor(
 
     init {
         // Load saved preferences
-        viewModelScope.launch {
+        coroutineScope.launch {
             preferencesManager.defaultTone.collect { tone ->
                 _currentTone.value = tone
             }
         }
-        viewModelScope.launch {
+        coroutineScope.launch {
             preferencesManager.customPrompt.collect { prompt ->
                 _customPrompt.value = prompt
             }
@@ -110,14 +115,14 @@ class KeyboardViewModel @Inject constructor(
 
     fun selectTone(tone: Tone) {
         _currentTone.value = tone
-        viewModelScope.launch {
+        coroutineScope.launch {
             preferencesManager.setDefaultTone(tone)
         }
     }
 
     fun updateCustomPrompt(prompt: String) {
         _customPrompt.value = prompt
-        viewModelScope.launch {
+        coroutineScope.launch {
             preferencesManager.setCustomPrompt(prompt)
         }
     }
@@ -129,7 +134,7 @@ class KeyboardViewModel @Inject constructor(
         _rewriteState.value = RewriteState.Loading
         _keyboardMode.value = KeyboardMode.REWRITE_RESULTS
 
-        viewModelScope.launch {
+        coroutineScope.launch {
             val result = rewriteRepository.rewrite(
                 input = text,
                 tone = _currentTone.value,
@@ -149,7 +154,7 @@ class KeyboardViewModel @Inject constructor(
     // ═══ Per-App Context ═══
 
     fun onAppChanged(packageName: String) {
-        viewModelScope.launch {
+        coroutineScope.launch {
             preferencesManager.perAppTones.first().let { toneMap ->
                 toneMap[packageName]?.let { toneName ->
                     _currentTone.value = Tone.fromName(toneName)
