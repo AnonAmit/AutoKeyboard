@@ -45,7 +45,17 @@ fun NavGraph(
         }
 
         composable(Routes.SETTINGS) {
-            val activity = androidx.compose.ui.platform.LocalContext.current as? android.app.Activity
+            val context = androidx.compose.ui.platform.LocalContext.current
+            var activity: android.app.Activity? = null
+            var currentContext = context
+            while (currentContext is android.content.ContextWrapper) {
+                if (currentContext is android.app.Activity) {
+                    activity = currentContext
+                    break
+                }
+                currentContext = currentContext.baseContext
+            }
+
             SettingsScreen(
                 onBack = { 
                     if (!navController.popBackStack()) {
