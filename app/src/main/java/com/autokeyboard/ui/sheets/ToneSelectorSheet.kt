@@ -37,7 +37,6 @@ fun ToneSelectorSheet(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.6f)
             .background(
                 SurfaceContainerHigh,
                 RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)

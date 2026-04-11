@@ -79,211 +79,207 @@ fun KeyboardScreen(
                 label = "Tone",
                 onClick = { viewModel.showToneSelector() }
             )
-            // Settings button (Icon only to save space)
-            ToolbarButton(
-                icon = Icons.Filled.Settings,
-                label = "",
-                onClick = { /* Open settings */ }
-            )
         }
 
-        // ═══ Keyboard Keys ═══
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Background)
-                .padding(6.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            val shouldUpperCase = isShifted || isCapsLock
-
-            // Row 1: Q W E R T Y U I O P
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                listOf("q", "w", "e", "r", "t", "y", "u", "i", "o", "p").forEach { key ->
-                    val display = if (shouldUpperCase) key.uppercase() else key
-                    KeyTile(
-                        label = display,
-                        onClick = {
-                            onKeyPress(display)
-                            viewModel.onKeyTyped()
-                        }
-                    )
-                }
-            }
-
-            // Row 2: A S D F G H J K L (with 5% horizontal padding)
-            Row(
+        // ═══ Keys & Overlays Container ═══
+        Box(modifier = Modifier.fillMaxWidth()) {
+            // ═══ Keyboard Keys ═══
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 18.dp),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    .background(Background)
+                    .padding(6.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                listOf("a", "s", "d", "f", "g", "h", "j", "k", "l").forEach { key ->
-                    val display = if (shouldUpperCase) key.uppercase() else key
-                    KeyTile(
-                        label = display,
-                        onClick = {
-                            onKeyPress(display)
-                            viewModel.onKeyTyped()
-                        }
-                    )
-                }
-            }
+                val shouldUpperCase = isShifted || isCapsLock
 
-            // Row 3: Shift Z X C V B N M Backspace
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                // Shift key
-                KeyTile(
-                    label = "",
-                    isSpecial = true,
-                    flex = 1.2f,
-                    onClick = { viewModel.onShiftToggle() },
-                    content = {
-                        Icon(
-                            imageVector = if (isCapsLock) Icons.Filled.KeyboardCapslock
-                            else Icons.Filled.KeyboardArrowUp,
-                            contentDescription = "Shift",
-                            tint = if (isShifted || isCapsLock) Primary else OnSurfaceVariant,
-                            modifier = Modifier.size(20.dp)
+                // Row 1: Q W E R T Y U I O P
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    listOf("q", "w", "e", "r", "t", "y", "u", "i", "o", "p").forEach { key ->
+                        val display = if (shouldUpperCase) key.uppercase() else key
+                        KeyTile(
+                            label = display,
+                            onClick = {
+                                onKeyPress(display)
+                                viewModel.onKeyTyped()
+                            }
                         )
                     }
-                )
+                }
 
-                listOf("z", "x", "c", "v", "b", "n", "m").forEach { key ->
-                    val display = if (shouldUpperCase) key.uppercase() else key
+                // Row 2: A S D F G H J K L (with 5% horizontal padding)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 18.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    listOf("a", "s", "d", "f", "g", "h", "j", "k", "l").forEach { key ->
+                        val display = if (shouldUpperCase) key.uppercase() else key
+                        KeyTile(
+                            label = display,
+                            onClick = {
+                                onKeyPress(display)
+                                viewModel.onKeyTyped()
+                            }
+                        )
+                    }
+                }
+
+                // Row 3: Shift Z X C V B N M Backspace
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    // Shift key
                     KeyTile(
-                        label = display,
-                        onClick = {
-                            onKeyPress(display)
-                            viewModel.onKeyTyped()
+                        label = "",
+                        isSpecial = true,
+                        flex = 1.2f,
+                        onClick = { viewModel.onShiftToggle() },
+                        content = {
+                            Icon(
+                                imageVector = if (isCapsLock) Icons.Filled.KeyboardCapslock
+                                else Icons.Filled.KeyboardArrowUp,
+                                contentDescription = "Shift",
+                                tint = if (isShifted || isCapsLock) Primary else OnSurfaceVariant,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    )
+
+                    listOf("z", "x", "c", "v", "b", "n", "m").forEach { key ->
+                        val display = if (shouldUpperCase) key.uppercase() else key
+                        KeyTile(
+                            label = display,
+                            onClick = {
+                                onKeyPress(display)
+                                viewModel.onKeyTyped()
+                            }
+                        )
+                    }
+
+                    // Backspace key
+                    KeyTile(
+                        label = "",
+                        isSpecial = true,
+                        flex = 1.2f,
+                        onClick = onBackspace,
+                        content = {
+                            Icon(
+                                imageVector = Icons.Filled.Backspace,
+                                contentDescription = "Backspace",
+                                tint = OnSurfaceVariant,
+                                modifier = Modifier.size(20.dp)
+                            )
                         }
                     )
                 }
 
-                // Backspace key
-                KeyTile(
-                    label = "",
-                    isSpecial = true,
-                    flex = 1.2f,
-                    onClick = onBackspace,
-                    content = {
+                // Row 4: Mic ?123 Space . Send
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(48.dp)
+                        .padding(horizontal = 4.dp, vertical = 0.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    // Mic button
+                    Box(
+                        modifier = Modifier
+                            .weight(1.5f)
+                            .fillMaxHeight()
+                            .background(SurfaceContainerHighest, RoundedCornerShape(9999.dp))
+                            .clickable { /* Voice input */ },
+                        contentAlignment = Alignment.Center
+                    ) {
                         Icon(
-                            imageVector = Icons.Filled.Backspace,
-                            contentDescription = "Backspace",
+                            Icons.Filled.Mic,
+                            contentDescription = "Mic",
                             tint = OnSurfaceVariant,
                             modifier = Modifier.size(20.dp)
                         )
                     }
-                )
+
+                    // ?123 button
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .background(SurfaceContainerHighest, RoundedCornerShape(9999.dp))
+                            .clickable { viewModel.onNumberModeToggle() },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            "?123",
+                            fontSize = 14.sp,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                            color = OnSurfaceVariant
+                        )
+                    }
+
+                    // Spacebar
+                    Box(
+                        modifier = Modifier
+                            .weight(5f)
+                            .fillMaxHeight()
+                            .background(SurfaceContainerHighest, RoundedCornerShape(9999.dp))
+                            .clickable { onKeyPress(" ") },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            "space",
+                            fontSize = 14.sp,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Medium,
+                            color = OnSurfaceVariant,
+                            letterSpacing = 1.sp
+                        )
+                    }
+
+                    // Period
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .background(SurfaceContainerHighest, RoundedCornerShape(9999.dp))
+                            .clickable { onKeyPress(".") },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(".", fontSize = 18.sp, color = OnSurfaceVariant)
+                    }
+
+                    // Send button (gradient)
+                    Box(
+                        modifier = Modifier
+                            .weight(2.5f)
+                            .fillMaxHeight()
+                            .shadow(
+                                elevation = 12.dp,
+                                shape = RoundedCornerShape(9999.dp),
+                                ambientColor = Primary.copy(alpha = 0.3f)
+                            )
+                            .background(
+                                Brush.linearGradient(listOf(Primary, PrimaryDim)),
+                                RoundedCornerShape(9999.dp)
+                            )
+                            .clickable { onEnter() },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.Send,
+                            contentDescription = "Send",
+                            tint = OnPrimary,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+                }
             }
 
-            // Row 4: Mic ?123 Space . Send
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
-                    .padding(horizontal = 4.dp, vertical = 0.dp),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                // Mic button
-                Box(
-                    modifier = Modifier
-                        .weight(1.5f)
-                        .fillMaxHeight()
-                        .background(SurfaceContainerHighest, RoundedCornerShape(9999.dp))
-                        .clickable { /* Voice input */ },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        Icons.Filled.Mic,
-                        contentDescription = "Mic",
-                        tint = OnSurfaceVariant,
-                        modifier = Modifier.size(20.dp)
-                    )
-                }
-
-                // ?123 button
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .background(SurfaceContainerHighest, RoundedCornerShape(9999.dp))
-                        .clickable { viewModel.onNumberModeToggle() },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        "?123",
-                        fontSize = 14.sp,
-                        fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
-                        color = OnSurfaceVariant
-                    )
-                }
-
-                // Spacebar
-                Box(
-                    modifier = Modifier
-                        .weight(5f)
-                        .fillMaxHeight()
-                        .background(SurfaceContainerHighest, RoundedCornerShape(9999.dp))
-                        .clickable { onKeyPress(" ") },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        "space",
-                        fontSize = 14.sp,
-                        fontWeight = androidx.compose.ui.text.font.FontWeight.Medium,
-                        color = OnSurfaceVariant,
-                        letterSpacing = 1.sp
-                    )
-                }
-
-                // Period
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .background(SurfaceContainerHighest, RoundedCornerShape(9999.dp))
-                        .clickable { onKeyPress(".") },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(".", fontSize = 18.sp, color = OnSurfaceVariant)
-                }
-
-                // Send button (gradient)
-                Box(
-                    modifier = Modifier
-                        .weight(2.5f)
-                        .fillMaxHeight()
-                        .shadow(
-                            elevation = 12.dp,
-                            shape = RoundedCornerShape(9999.dp),
-                            ambientColor = Primary.copy(alpha = 0.3f)
-                        )
-                        .background(
-                            Brush.linearGradient(listOf(Primary, PrimaryDim)),
-                            RoundedCornerShape(9999.dp)
-                        )
-                        .clickable { onEnter() },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        Icons.AutoMirrored.Filled.Send,
-                        contentDescription = "Send",
-                        tint = OnPrimary,
-                        modifier = Modifier.size(20.dp)
-                    )
-                }
-            }
-        }
-
-        // ═══ Overlays ═══
-        when (keyboardMode) {
+            // ═══ Overlays ═══
+            when (keyboardMode) {
             KeyboardViewModel.KeyboardMode.TONE_SELECT -> {
                 ToneSelectorSheet(
                     currentTone = currentTone,
@@ -315,6 +311,7 @@ fun KeyboardScreen(
                 )
             }
             else -> { /* Typing mode — no overlay */ }
+        }
         }
     }
 }
