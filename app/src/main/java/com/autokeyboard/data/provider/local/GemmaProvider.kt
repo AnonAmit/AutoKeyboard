@@ -102,6 +102,14 @@ class GemmaProvider(
         Tone.POETIC -> listOf("🌙", "🎭", "🦋", "✨", "🌸")
         Tone.GEN_Z -> listOf("💀", "😭", "🔥", "✨", "🫡")
         Tone.FORMAL -> listOf("🎩", "📜", "⚖️", "🏛️", "✍️")
+        Tone.CONCISE -> listOf("🎯", "⚡", "✂️", "📝", "✅")
+        Tone.ENTHUSIASTIC -> listOf("🤩", "🎉", "🔥", "🙌", "✨")
+        Tone.SARCASTIC -> listOf("🙃", "🙄", "😂", "💅", "🤡")
+        Tone.CONFIDENT -> listOf("😎", "💯", "💪", "🚀", "👑")
+        Tone.EMPATHETIC -> listOf("🤍", "🫂", "🥺", "🌸", "🤲")
+        Tone.PERSUASIVE -> listOf("🗣️", "💡", "📈", "🤝", "🔥")
+        Tone.PASSIVE_AGGRESSIVE -> listOf("☕", "🙃", "😊", "💅", "🐸")
+        Tone.PIRATE -> listOf("🏴‍☠️", "⚓", "🦜", "💰", "🌊")
         Tone.CUSTOM -> listOf("✨", "💫", "🎨", "🎯", "💭")
     }
 }
