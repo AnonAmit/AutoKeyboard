@@ -6,6 +6,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.*
+import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import com.autokeyboard.ui.keyboard.KeyboardScreen
 import com.autokeyboard.ui.theme.AutoKeyboardTheme
@@ -21,18 +22,22 @@ import javax.inject.Inject
  * - ComposeView requires manual lifecycle owner setup
  */
 @AndroidEntryPoint
-class KeyboardService : InputMethodService(), LifecycleOwner, androidx.savedstate.SavedStateRegistryOwner {
+class KeyboardService : InputMethodService(), LifecycleOwner, ViewModelStoreOwner, androidx.savedstate.SavedStateRegistryOwner {
 
     @Inject lateinit var viewModel: KeyboardViewModel
 
     private val lifecycleRegistry = LifecycleRegistry(this)
     private val savedStateRegistryController = androidx.savedstate.SavedStateRegistryController.create(this)
+    private val store = ViewModelStore()
 
     override val savedStateRegistry: androidx.savedstate.SavedStateRegistry
         get() = savedStateRegistryController.savedStateRegistry
 
     override val lifecycle: Lifecycle
         get() = lifecycleRegistry
+
+    override val viewModelStore: ViewModelStore
+        get() = store
 
     override fun onCreate() {
         super.onCreate()
@@ -48,6 +53,7 @@ class KeyboardService : InputMethodService(), LifecycleOwner, androidx.savedstat
         val composeView = ComposeView(this).apply {
             setViewTreeLifecycleOwner(this@KeyboardService)
             setViewTreeSavedStateRegistryOwner(this@KeyboardService)
+            setViewTreeViewModelStoreOwner(this@KeyboardService)
 
             setContent {
                 AutoKeyboardTheme {
@@ -61,6 +67,14 @@ class KeyboardService : InputMethodService(), LifecycleOwner, androidx.savedstat
                     )
                 }
             }
+        }
+        
+        // CRITICAL: WindowRecomposer in Compose 1.3+ looks for LifecycleOwner on the window's decor view
+        // once attached to the window hierarchy. Setting it on just ComposeView fails at onAttachToWindow.
+        window?.window?.decorView?.let { decorView ->
+            decorView.setViewTreeLifecycleOwner(this)
+            decorView.setViewTreeSavedStateRegistryOwner(this)
+            decorView.setViewTreeViewModelStoreOwner(this)
         }
 
         return composeView
