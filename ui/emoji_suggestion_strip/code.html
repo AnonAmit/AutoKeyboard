@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#9c7eff",
+                        "on-error-container": "#ffb2b9",
+                        "on-tertiary": "#585871",
+                        "primary-dim": "#7e51ff",
+                        "secondary": "#4af8e3",
+                        "primary-container": "#a98fff",
+                        "on-primary": "#340090",
+                        "on-secondary-container": "#dcfff8",
+                        "secondary-fixed-dim": "#33e9d5",
+                        "on-background": "#e5e3ff",
+                        "on-surface": "#e5e3ff",
+                        "on-primary-container": "#280072",
+                        "inverse-primary": "#6834eb",
+                        "outline-variant": "#46465c",
+                        "on-tertiary-fixed": "#3d3d55",
+                        "surface-container": "#17172f",
+                        "on-primary-fixed": "#000000",
+                        "surface-container-high": "#1d1d37",
+                        "primary": "#b6a0ff",
+                        "secondary-container": "#006a60",
+                        "surface-container-highest": "#23233f",
+                        "outline": "#74738b",
+                        "tertiary": "#f2efff",
+                        "surface-bright": "#292948",
+                        "on-error": "#490013",
+                        "background": "#0c0c1f",
+                        "on-surface-variant": "#aaa8c3",
+                        "on-tertiary-container": "#504f68",
+                        "secondary-fixed": "#4af8e3",
+                        "tertiary-fixed-dim": "#d4d1f0",
+                        "surface": "#0c0c1f",
+                        "on-surface-variant": "#aaa8c3",
+                        "on-secondary-fixed-variant": "#00655b",
+                        "on-secondary-fixed": "#00463f",
+                        "tertiary-fixed": "#e2dffe",
+                        "on-tertiary-fixed-variant": "#5a5972",
+                        "error-container": "#a70138",
+                        "surface-container-low": "#111127",
+                        "secondary-dim": "#33e9d5",
+                        "error-dim": "#d73357",
+                        "surface-dim": "#0c0c1f",
+                        "on-secondary": "#005b51",
+                        "tertiary-container": "#e2dffe",
+                        "error": "#ff6e84",
+                        "primary-fixed": "#a98fff",
+                        "on-primary-fixed-variant": "#32008a",
+                        "surface-tint": "#b6a0ff",
+                        "inverse-on-surface": "#53536a",
+                        "key-tiles": "#2D2D44"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="bg-[#0c0c1f] text-[#b6a0ff] font-['Plus_Jakarta_Sans'] font-bold text-lg flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#b6a0ff]">keyboard</span>
+<span class="text-xl font-extrabold tracking-tight text-[#b6a0ff]">AutoKeyboard</span>
+</div>
+<div class="active:scale-95 duration-200 hover:bg-[#23233f] transition-colors p-2 rounded-full cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-6 pt-8 pb-32">
+<div class="max-w-md mx-auto space-y-8">
+<!-- Context Visualizer (Simulation of AI understanding) -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 px-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<h2 class="font-headline font-bold text-on-surface-variant text-sm tracking-wider uppercase">AI Context Analysis</h2>
+</div>
+<!-- Glassmorphism Card -->
+<div class="bg-surface-variant/60 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-white/5">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-primary-dim flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(182,160,255,0.3)]">
+<span class="material-symbols-outlined text-on-primary">psychology</span>
+</div>
+<div class="space-y-1">
+<p class="text-on-surface font-medium italic">"I'm really excited to see you tonight..."</p>
+<p class="text-on-surface-variant text-xs font-label">Message sentiment: Positive &amp; Energetic</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Keyboard Layout Mockup (Preview) -->
+<section class="space-y-4">
+<h3 class="font-headline font-semibold text-lg px-2">Preview</h3>
+<div class="bg-surface-container-low rounded-3xl p-4 aspect-[4/3] flex flex-col justify-end relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none" data-alt="abstract flowing purple and blue neon silk waves background texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAC4plp8UhNg9y__gua8Gp90nAZ96T3lJbDobW0COtRVg_L90xawXhhNKXvQfdt5XZtaoPOXlfPQSJ-aUgTgd_6q2RnFicCq3YwYLFCdVXBPfzENxhkNn30JiFGbUkbSpcWdvymBX8e5tGiqI5PhxwtlTMKzwZtjck_-eYdKX1NidzGlHdyTrdV6ePCKg6vMS4F9dipyVYmdywCJu6Wi9rcWTsEugRFLXwWBWLL2O0wNY8wWKAmVydQMdnUJ46F5lCkKfZKgbB0ToPc'); background-size: cover;">
+</div>
+<!-- Simulated Keys -->
+<div class="grid grid-cols-10 gap-1.5 opacity-40">
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+<div class="h-10 bg-key-tiles rounded-sm"></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating AI Suggestion UI Section -->
+<div class="fixed bottom-0 left-0 w-full z-40 bg-surface shadow-[0_-8px_32px_rgba(182,160,255,0.1)]">
+<!-- Emoji Suggestion Strip (48dp/12rem approx) -->
+<div class="h-14 bg-[#1A1A2E] flex items-center px-4 gap-4 overflow-hidden">
+<!-- Context Label -->
+<div class="shrink-0 flex items-center gap-1.5 py-1 px-3 bg-primary-container/20 rounded-full border border-primary/20">
+<span class="text-[10px] font-bold text-primary uppercase tracking-tighter font-label">Tone: Flirty 🔥</span>
+</div>
+<!-- Scrollable Emoji Row -->
+<div class="flex-1 flex items-center gap-2 overflow-x-auto no-scrollbar py-2">
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">😘</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">✨</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">❤️</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">😏</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">🌹</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">🥂</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">🔥</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">😜</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">🍭</button>
+<button class="shrink-0 w-10 h-8 bg-[#2D2D44] rounded-full flex items-center justify-center text-xl active:scale-90 transition-transform">💘</button>
+</div>
+<!-- Dismiss X Icon -->
+<button class="shrink-0 p-1 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Simulated Base Keyboard Spacer (Visual Context) -->
+<div class="h-10 w-full bg-[#0c0c1f] flex items-center justify-center">
+<div class="w-32 h-1 bg-outline-variant/30 rounded-full"></div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Shell) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 bg-[#0c0c1f]/80 backdrop-blur-xl border-t border-[#b6a0ff]/15 shadow-[0_-8px_32px_rgba(182,160,255,0.08)] rounded-t-[24px]">
+<a class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#b6a0ff] to-[#7e51ff] text-[#0c0c1f] rounded-full p-3 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">auto_fix</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">mood</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">psychology</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</body></html>

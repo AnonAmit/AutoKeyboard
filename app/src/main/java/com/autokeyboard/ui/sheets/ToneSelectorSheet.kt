@@ -115,7 +115,7 @@ fun ToneSelectorSheet(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Icon(
-                    imageVector = androidx.compose.material.icons.Icons.Filled.AddCircle,
+                    imageVector = androidx.compose.material.icons.Icons.Filled.Add,
                     contentDescription = null,
                     tint = PrimaryFixedDim,
                     modifier = Modifier.size(16.dp)

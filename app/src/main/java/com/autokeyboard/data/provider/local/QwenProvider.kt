@@ -58,12 +58,14 @@ class QwenProvider(
 
     override fun streamRewrite(
         input: String, tone: Tone, customPrompt: String?, model: String
-    ): Flow<String> = flow {
+    ): Flow<String> = kotlinx.coroutines.flow.callbackFlow {
         val lm = localModels.find { it.id == model } ?: localModels.first()
         if (!modelManager.isModelDownloaded(lm)) throw IllegalStateException("Not downloaded")
         if (!bridge.isModelLoaded()) bridge.loadModel(modelManager.getModelPath(lm), 2048, 4)
         val prompt = LocalPromptTemplates.buildQwenPrompt(input, tone, customPrompt)
         bridge.generateStreaming(prompt, 512, 0.7f) { token -> trySend(token) }
+        close()
+        kotlinx.coroutines.channels.awaitClose { }
     }.flowOn(Dispatchers.Default)
 
     override suspend fun suggestEmojis(input: String, tone: Tone) =

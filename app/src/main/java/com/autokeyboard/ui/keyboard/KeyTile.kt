@@ -26,7 +26,7 @@ import com.autokeyboard.ui.theme.*
  * Active: bg-primary-container, text on-primary-container
  */
 @Composable
-fun KeyTile(
+fun RowScope.KeyTile(
     label: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,

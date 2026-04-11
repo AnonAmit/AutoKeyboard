@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoKeyboard Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#9c7eff",
+                    "on-error-container": "#ffb2b9",
+                    "on-tertiary": "#585871",
+                    "primary-dim": "#7e51ff",
+                    "secondary": "#4af8e3",
+                    "primary-container": "#a98fff",
+                    "on-primary": "#340090",
+                    "on-secondary-container": "#dcfff8",
+                    "secondary-fixed-dim": "#33e9d5",
+                    "on-background": "#e5e3ff",
+                    "on-surface": "#e5e3ff",
+                    "on-primary-container": "#280072",
+                    "inverse-primary": "#6834eb",
+                    "outline-variant": "#46465c",
+                    "on-tertiary-fixed": "#3d3d55",
+                    "surface-container": "#17172f",
+                    "on-primary-fixed": "#000000",
+                    "surface-container-high": "#1d1d37",
+                    "primary": "#b6a0ff",
+                    "secondary-container": "#006a60",
+                    "surface-container-highest": "#23233f",
+                    "outline": "#74738b",
+                    "tertiary": "#f2efff",
+                    "surface-bright": "#292948",
+                    "on-error": "#490013",
+                    "background": "#0c0c1f",
+                    "on-surface-variant": "#aaa8c3",
+                    "on-tertiary-container": "#504f68",
+                    "secondary-fixed": "#4af8e3",
+                    "tertiary-fixed-dim": "#d4d1f0",
+                    "surface": "#0c0c1f",
+                    "surface-container-lowest": "#000000",
+                    "surface-variant": "#23233f",
+                    "inverse-surface": "#fcf8ff",
+                    "tertiary-dim": "#d4d1f0",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "on-secondary-fixed": "#00463f",
+                    "tertiary-fixed": "#e2dffe",
+                    "on-tertiary-fixed-variant": "#5a5972",
+                    "error-container": "#a70138",
+                    "surface-container-low": "#111127",
+                    "secondary-dim": "#33e9d5",
+                    "error-dim": "#d73357",
+                    "surface-dim": "#0c0c1f",
+                    "on-secondary": "#005b51",
+                    "tertiary-container": "#e2dffe",
+                    "error": "#ff6e84",
+                    "primary-fixed": "#a98fff",
+                    "on-primary-fixed-variant": "#32008a",
+                    "surface-tint": "#b6a0ff",
+                    "inverse-on-surface": "#53536a",
+                    "key-tiles": "#2D2D44"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#111127] flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#b6a0ff]">keyboard</span>
+<h1 class="text-xl font-extrabold tracking-tight text-[#b6a0ff] font-['Plus_Jakarta_Sans']">AutoKeyboard</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#23233f] transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#b6a0ff]">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-6 py-8 space-y-10">
+<!-- AI Provider Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-headline font-bold text-xl text-primary">AI Providers</h2>
+<span class="text-on-surface-variant text-sm font-medium">Manage Connections</span>
+</div>
+<!-- Bento Grid of Providers -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- OpenAI Connected -->
+<div class="bg-surface-container-low rounded-xl p-5 border border-outline-variant/15 flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 bg-[#2D2D44] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">auto_fix</span>
+</div>
+<span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-1 rounded-full border border-secondary/20">CONNECTED</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg">OpenAI</h3>
+<p class="text-on-surface-variant text-sm">GPT-4o Optimized</p>
+</div>
+</div>
+<!-- Claude Connect -->
+<div class="bg-surface-container-low rounded-xl p-5 border border-outline-variant/5 flex flex-col justify-between h-40 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 bg-[#2D2D44] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">psychology</span>
+</div>
+<span class="text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full border border-outline-variant/30">+ CONNECT</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg">Claude</h3>
+<p class="text-on-surface-variant text-sm">Anthropic Intelligence</p>
+</div>
+</div>
+<!-- Gemini Connect -->
+<div class="bg-surface-container-low rounded-xl p-5 border border-outline-variant/5 flex flex-col justify-between h-40 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 bg-[#2D2D44] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">diamond</span>
+</div>
+<span class="text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full border border-outline-variant/30">+ CONNECT</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg">Gemini</h3>
+<p class="text-on-surface-variant text-sm">Google AI Suite</p>
+</div>
+</div>
+<!-- Groq Connect -->
+<div class="bg-surface-container-low rounded-xl p-5 border border-outline-variant/5 flex flex-col justify-between h-40 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 bg-[#2D2D44] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">bolt</span>
+</div>
+<span class="text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full border border-outline-variant/30">+ CONNECT</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg">Groq</h3>
+<p class="text-on-surface-variant text-sm">Ultra-fast Inference</p>
+</div>
+</div>
+</div>
+</section>
+<!-- API Config Section -->
+<section class="bg-surface-container-high/40 rounded-2xl p-6 border border-outline-variant/10 space-y-6">
+<h2 class="font-headline font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">key</span>
+                Provider Details
+            </h2>
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest ml-1">Active Model</label>
+<div class="relative">
+<select class="w-full h-11 bg-surface-container-highest border-none rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary appearance-none cursor-pointer">
+<option>GPT-4o (Most Capable)</option>
+<option>GPT-4o mini (Fast &amp; Cheap)</option>
+<option>GPT-3.5 Turbo (Legacy)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest ml-1">Custom API Key</label>
+<div class="relative">
+<input class="w-full h-11 bg-surface-container-highest border-none rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary placeholder-on-surface-variant/40" placeholder="Paste your key here" type="password" value="sk-••••••••••••••••••••••••••••••"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-primary cursor-pointer hover:opacity-80">visibility_off</span>
+</div>
+<p class="text-[10px] text-on-surface-variant/60 ml-1 italic">Keys are encrypted locally on this device.</p>
+</div>
+</div>
+</section>
+<!-- Preferences & Privacy -->
+<section class="space-y-4">
+<h2 class="font-headline font-bold text-lg px-1">App Intelligence</h2>
+<div class="space-y-2">
+<!-- Privacy Toggle -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div class="flex flex-col">
+<span class="font-semibold">Privacy Mode</span>
+<span class="text-xs text-on-surface-variant">Store no messages on local or cloud storage</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Tone Selector -->
+<div class="bg-surface-container-low rounded-xl p-4 space-y-3">
+<div class="flex justify-between items-center">
+<span class="font-semibold">Default Tone</span>
+<span class="text-xs font-bold text-secondary uppercase bg-secondary/10 px-2 py-0.5 rounded">Professional</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="bg-surface-container-highest px-4 py-2 rounded-full text-sm border border-primary/20 text-primary font-medium">Professional</button>
+<button class="bg-[#0c0c1f] px-4 py-2 rounded-full text-sm text-on-surface-variant hover:bg-surface-container-highest transition-colors">Casual</button>
+<button class="bg-[#0c0c1f] px-4 py-2 rounded-full text-sm text-on-surface-variant hover:bg-surface-container-highest transition-colors">Concise</button>
+<button class="bg-[#0c0c1f] px-4 py-2 rounded-full text-sm text-on-surface-variant hover:bg-surface-container-highest transition-colors">Friendly</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Theme Selection -->
+<section class="space-y-4">
+<h2 class="font-headline font-bold text-lg px-1">Appearance</h2>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center gap-2 p-4 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-primary/50 transition-all">
+<div class="w-full aspect-video rounded-lg bg-gradient-to-br from-white/10 to-black/30 border border-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">devices</span>
+</div>
+<span class="text-xs font-semibold">System</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 bg-surface-container-low rounded-xl border border-primary transition-all shadow-[0_0_12px_rgba(182,160,255,0.2)]">
+<div class="w-full aspect-video rounded-lg bg-[#111127] border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">dark_mode</span>
+</div>
+<span class="text-xs font-semibold text-primary">Dark</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-primary/50 transition-all">
+<div class="w-full aspect-video rounded-lg bg-black border border-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">brightness_2</span>
+</div>
+<span class="text-xs font-semibold">OLED</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Predicted) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 bg-[#0c0c1f]/80 backdrop-blur-xl border-t border-[#b6a0ff]/15 shadow-[0_-8px_32px_rgba(182,160,255,0.08)] rounded-t-[24px]">
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">auto_fix</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Refine</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">mood</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Tone</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Genius</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#b6a0ff] to-[#7e51ff] text-[#0c0c1f] rounded-full p-3 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="hidden">Settings</span>
+</a>
+</nav>
+</body></html>

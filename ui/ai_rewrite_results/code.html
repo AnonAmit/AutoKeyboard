@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoKeyboard AI Rewrite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#9c7eff",
+                    "on-error-container": "#ffb2b9",
+                    "on-tertiary": "#585871",
+                    "primary-dim": "#7e51ff",
+                    "secondary": "#4af8e3",
+                    "primary-container": "#a98fff",
+                    "on-primary": "#340090",
+                    "on-secondary-container": "#dcfff8",
+                    "secondary-fixed-dim": "#33e9d5",
+                    "on-background": "#e5e3ff",
+                    "on-surface": "#e5e3ff",
+                    "on-primary-container": "#280072",
+                    "inverse-primary": "#6834eb",
+                    "outline-variant": "#46465c",
+                    "on-tertiary-fixed": "#3d3d55",
+                    "surface-container": "#17172f",
+                    "on-primary-fixed": "#000000",
+                    "surface-container-high": "#1d1d37",
+                    "primary": "#b6a0ff",
+                    "secondary-container": "#006a60",
+                    "surface-container-highest": "#23233f",
+                    "outline": "#74738b",
+                    "tertiary": "#f2efff",
+                    "surface-bright": "#292948",
+                    "on-error": "#490013",
+                    "background": "#0c0c1f",
+                    "on-surface-variant": "#aaa8c3",
+                    "on-tertiary-container": "#504f68",
+                    "secondary-fixed": "#4af8e3",
+                    "tertiary-fixed-dim": "#d4d1f0",
+                    "surface": "#0c0c1f",
+                    "surface-container-lowest": "#000000",
+                    "surface-variant": "#23233f",
+                    "inverse-surface": "#fcf8ff",
+                    "tertiary-dim": "#d4d1f0",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "on-secondary-fixed": "#00463f",
+                    "tertiary-fixed": "#e2dffe",
+                    "on-tertiary-fixed-variant": "#5a5972",
+                    "error-container": "#a70138",
+                    "surface-container-low": "#111127",
+                    "secondary-dim": "#33e9d5",
+                    "error-dim": "#d73357",
+                    "surface-dim": "#0c0c1f",
+                    "on-secondary": "#005b51",
+                    "tertiary-container": "#e2dffe",
+                    "error": "#ff6e84",
+                    "primary-fixed": "#a98fff",
+                    "on-primary-fixed-variant": "#32008a",
+                    "surface-tint": "#b6a0ff",
+                    "inverse-on-surface": "#53536a",
+                    "key-tiles": "#2D2D44"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "3xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .shimmer {
+        background: linear-gradient(90deg, #23233f 25%, #2D2D44 50%, #23233f 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite linear;
+      }
+      @keyframes shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col overflow-hidden">
+<!-- Top App Bar (Shared Component Anchor) -->
+<header class="bg-[#0c0c1f] text-[#b6a0ff] font-['Plus_Jakarta_Sans'] font-bold text-lg docked full-width top-0 flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">keyboard</span>
+<span class="text-xl font-extrabold tracking-tight text-[#b6a0ff]">AutoKeyboard</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#23233f] transition-colors active:scale-95 duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas (Focused Journey Background) -->
+<main class="flex-1 px-6 pt-8 pb-32">
+<div class="space-y-6">
+<div class="p-6 bg-surface-container-low rounded-3xl">
+<h2 class="font-headline font-bold text-headline-sm mb-2">Current Context</h2>
+<p class="text-on-surface-variant leading-relaxed">
+                    "I'm going to be late for the meeting, sorry everyone. See you in ten."
+                </p>
+</div>
+<!-- Skeleton Shimmer Placeholder (Simulating Content under sheet) -->
+<div class="space-y-4 opacity-30">
+<div class="h-24 w-full bg-surface-container-highest rounded-2xl shimmer"></div>
+<div class="h-24 w-full bg-surface-container-highest rounded-2xl shimmer"></div>
+</div>
+</div>
+</main>
+<!-- UI Overlay: AI Rewrite Bottom Sheet -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex flex-col justify-end">
+<!-- The Bottom Sheet Canvas -->
+<div class="bg-[#1A1A2E] h-[663px] w-full rounded-t-3xl shadow-[0_-8px_32px_rgba(182,160,255,0.15)] flex flex-col relative overflow-hidden">
+<!-- Drag Handle -->
+<div class="flex justify-center pt-4">
+<div class="w-8 h-1 bg-outline-variant/20 rounded-full"></div>
+</div>
+<!-- Header Section -->
+<div class="flex items-center justify-between px-6 py-5 border-b border-white/5">
+<div class="flex items-center gap-3">
+<span class="text-xl font-headline font-bold flex items-center gap-2">
+<span class="text-secondary">✨</span> AI Suggestions
+                    </span>
+<span class="bg-primary/20 text-primary-fixed-dim text-[10px] px-2.5 py-1 rounded-full font-bold tracking-wider uppercase border border-primary/20">
+                        Professional
+                    </span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-highest/50 hover:bg-surface-container-highest active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-6 py-6 space-y-6">
+<!-- Suggestion Card 1 -->
+<div class="bg-key-tiles rounded-2xl p-4 flex flex-col gap-4 shadow-xl border border-white/5">
+<div class="flex justify-between items-start">
+<p class="text-white text-[14px] leading-relaxed flex-1 pr-4">
+                            Apologies to the team, but I'll be approximately ten minutes late for our scheduled meeting. Please start without me if necessary.
+                        </p>
+<div class="flex flex-col gap-2">
+<button class="w-10 h-10 bg-surface-container-highest rounded-xl flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+<button class="w-10 h-10 bg-primary-container text-on-primary-container rounded-xl flex items-center justify-center hover:opacity-90 active:scale-90 transition-all">
+<span class="material-symbols-outlined">input</span>
+</button>
+</div>
+</div>
+<!-- Emoji Strip -->
+<div class="flex items-center gap-2 pt-2 border-t border-white/5">
+<span class="text-xs text-on-surface-variant mr-1">Context:</span>
+<div class="flex items-center gap-3 px-2 py-1.5 bg-background/50 rounded-lg">
+<span class="text-lg">🙏</span>
+<span class="text-lg">⏳</span>
+<span class="text-lg">🏃‍♂️</span>
+<span class="text-lg">💼</span>
+<span class="text-lg">🤝</span>
+</div>
+</div>
+</div>
+<!-- Suggestion Card 2 (Casual Variation) -->
+<div class="bg-key-tiles rounded-2xl p-4 flex flex-col gap-4 shadow-xl border border-white/5">
+<div class="flex justify-between items-start">
+<p class="text-white text-[14px] leading-relaxed flex-1 pr-4">
+                            Hey everyone, running about 10 mins behind. Really sorry for the delay, will be there as soon as I can!
+                        </p>
+<div class="flex flex-col gap-2">
+<button class="w-10 h-10 bg-surface-container-highest rounded-xl flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+<button class="w-10 h-10 bg-primary-container text-on-primary-container rounded-xl flex items-center justify-center hover:opacity-90 active:scale-90 transition-all">
+<span class="material-symbols-outlined">input</span>
+</button>
+</div>
+</div>
+<!-- Emoji Strip -->
+<div class="flex items-center gap-2 pt-2 border-t border-white/5">
+<span class="text-xs text-on-surface-variant mr-1">Context:</span>
+<div class="flex items-center gap-3 px-2 py-1.5 bg-background/50 rounded-lg">
+<span class="text-lg">😅</span>
+<span class="text-lg">💨</span>
+<span class="text-lg">📍</span>
+<span class="text-lg">🙌</span>
+<span class="text-lg">✌️</span>
+</div>
+</div>
+</div>
+<!-- Loading Skeleton Shimmer State -->
+<div class="bg-key-tiles/40 rounded-2xl p-4 space-y-4 overflow-hidden relative">
+<div class="h-4 w-3/4 bg-white/5 rounded-full shimmer"></div>
+<div class="h-4 w-full bg-white/5 rounded-full shimmer"></div>
+<div class="h-4 w-1/2 bg-white/5 rounded-full shimmer"></div>
+</div>
+</div>
+<!-- Bottom CTA Section -->
+<div class="px-6 py-6 bg-surface-container-high border-t border-white/5 flex gap-3">
+<button class="flex-1 py-4 px-6 rounded-full font-bold bg-[#7C4DFF] text-white flex items-center justify-center gap-2 hover:bg-[#6A3DE8] active:scale-95 transition-all shadow-lg shadow-primary-dim/20">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+                    Regenerate
+                </button>
+<button class="flex-1 py-4 px-6 rounded-full font-bold border border-primary/30 text-primary flex items-center justify-center gap-2 hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+                    Adjust Tone
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Nav Bar (Shared Component Anchor) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 bg-[#0c0c1f]/80 backdrop-blur-xl rounded-t-[24px] border-t border-[#b6a0ff]/15 shadow-[0_-8px_32px_rgba(182,160,255,0.08)]">
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all" href="#">
+<span class="material-symbols-outlined">auto_fix</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all" href="#">
+<span class="material-symbols-outlined">mood</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</body></html>

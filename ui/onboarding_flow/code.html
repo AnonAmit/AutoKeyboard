@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoKeyboard Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#9c7eff",
+                    "on-error-container": "#ffb2b9",
+                    "on-tertiary": "#585871",
+                    "primary-dim": "#7e51ff",
+                    "secondary": "#4af8e3",
+                    "primary-container": "#a98fff",
+                    "on-primary": "#340090",
+                    "on-secondary-container": "#dcfff8",
+                    "secondary-fixed-dim": "#33e9d5",
+                    "on-background": "#e5e3ff",
+                    "on-surface": "#e5e3ff",
+                    "on-primary-container": "#280072",
+                    "inverse-primary": "#6834eb",
+                    "outline-variant": "#46465c",
+                    "on-tertiary-fixed": "#3d3d55",
+                    "surface-container": "#17172f",
+                    "on-primary-fixed": "#000000",
+                    "surface-container-high": "#1d1d37",
+                    "primary": "#b6a0ff",
+                    "secondary-container": "#006a60",
+                    "surface-container-highest": "#23233f",
+                    "outline": "#74738b",
+                    "tertiary": "#f2efff",
+                    "surface-bright": "#292948",
+                    "on-error": "#490013",
+                    "background": "#0c0c1f",
+                    "on-surface-variant": "#aaa8c3",
+                    "on-tertiary-container": "#504f68",
+                    "secondary-fixed": "#4af8e3",
+                    "tertiary-fixed-dim": "#d4d1f0",
+                    "surface": "#0c0c1f",
+                    "surface-container-lowest": "#000000",
+                    "surface-variant": "#23233f",
+                    "inverse-surface": "#fcf8ff",
+                    "tertiary-dim": "#d4d1f0",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "on-secondary-fixed": "#00463f",
+                    "tertiary-fixed": "#e2dffe",
+                    "on-tertiary-fixed-variant": "#5a5972",
+                    "error-container": "#a70138",
+                    "surface-container-low": "#111127",
+                    "secondary-dim": "#33e9d5",
+                    "error-dim": "#d73357",
+                    "surface-dim": "#0c0c1f",
+                    "on-secondary": "#005b51",
+                    "tertiary-container": "#e2dffe",
+                    "error": "#ff6e84",
+                    "primary-fixed": "#a98fff",
+                    "on-primary-fixed-variant": "#32008a",
+                    "surface-tint": "#b6a0ff",
+                    "inverse-on-surface": "#53536a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body": [
+                            "Inter"
+                    ],
+                    "label": [
+                            "Inter"
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0c0c1f;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-surface antialiased overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Bar Navigation (Contextual Suppression for Onboarding applies, but we use it as a shell for Skip) -->
+<header class="flex justify-end items-center px-8 py-8 w-full fixed top-0 left-0 z-50">
+<button class="font-headline font-semibold text-on-surface-variant hover:text-primary transition-colors text-sm uppercase tracking-widest">
+            Skip
+        </button>
+</header>
+<main class="relative h-screen flex flex-col items-center justify-center px-6 md:px-24">
+<!-- Hero Section: The Obsidian Architect Aesthetic -->
+<div class="relative w-full max-w-md aspect-square flex items-center justify-center">
+<!-- Atmospheric Glow Background -->
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-40"></div>
+<!-- Central Animated Component (Representation) -->
+<div class="relative z-10 w-64 h-64 bg-surface-container-high rounded-[48px] flex items-center justify-center shadow-2xl overflow-hidden group">
+<!-- Inner Glass Layer -->
+<div class="absolute inset-0 bg-primary/5 backdrop-blur-md border border-outline-variant/10"></div>
+<!-- Keyboard Representation -->
+<div class="relative z-20 flex flex-col items-center gap-4">
+<div class="flex gap-2">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">keyboard</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-primary-dim flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-primary text-3xl" style="font-variation-settings: 'FILL' 1;">auto_fix</span>
+</div>
+</div>
+<!-- Typing Indicators -->
+<div class="flex items-center gap-1.5 mt-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div class="w-2 h-2 rounded-full bg-primary opacity-50"></div>
+<div class="w-2 h-2 rounded-full bg-primary opacity-20"></div>
+</div>
+</div>
+<!-- Abstract Data Flow Decor -->
+<div class="absolute bottom-0 w-full px-6 pb-6">
+<div class="h-1.5 w-full bg-outline-variant/20 rounded-full overflow-hidden">
+<div class="h-full w-2/3 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Content -->
+<div class="mt-16 text-center max-w-lg">
+<h1 class="font-headline font-extrabold text-4xl md:text-5xl leading-tight tracking-tight text-on-surface">
+                Rewrite anything, <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-secondary">anywhere</span>
+</h1>
+<p class="mt-6 text-on-surface-variant text-lg md:text-xl leading-relaxed font-body font-normal opacity-80">
+                Experience the first AI-powered keyboard designed for precision, speed, and seamless expression across every app.
+            </p>
+</div>
+<!-- Bottom Controls Layout -->
+<footer class="fixed bottom-0 left-0 w-full px-8 pb-12 flex items-center justify-between">
+<!-- Progress Dots -->
+<div class="flex items-center gap-3">
+<div class="h-2 w-8 rounded-full bg-primary transition-all duration-300"></div>
+<div class="h-2 w-2 rounded-full bg-surface-container-highest transition-all duration-300"></div>
+<div class="h-2 w-2 rounded-full bg-surface-container-highest transition-all duration-300"></div>
+</div>
+<!-- Primary CTA -->
+<button class="group flex items-center gap-3 bg-gradient-to-tr from-primary to-primary-dim text-on-primary font-body font-bold py-4 px-8 rounded-full shadow-[0_8px_32px_rgba(182,160,255,0.25)] active:scale-95 transition-all duration-200">
+<span>Next</span>
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</footer>
+</main>
+<!-- Background Texture -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-20">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] mix-blend-overlay"></div>
+</div>
+</body></html>

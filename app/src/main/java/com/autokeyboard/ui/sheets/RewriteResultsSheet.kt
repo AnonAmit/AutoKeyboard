@@ -250,7 +250,7 @@ private fun SuggestionCard(
                         .clickable { onCopy() },
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(Icons.Filled.ContentCopy, "Copy", tint = OnSurfaceVariant, Modifier.size(18.dp))
+                    Icon(Icons.Filled.ContentCopy, "Copy", tint = OnSurfaceVariant, modifier = Modifier.size(18.dp))
                 }
                 // Insert button
                 Box(
@@ -260,7 +260,7 @@ private fun SuggestionCard(
                         .clickable { onInsert() },
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(Icons.Filled.Input, "Insert", tint = OnPrimaryContainer, Modifier.size(18.dp))
+                    Icon(Icons.Filled.Input, "Insert", tint = OnPrimaryContainer, modifier = Modifier.size(18.dp))
                 }
             }
         }

@@ -20,12 +20,15 @@ import javax.inject.Inject
  * - ComposeView requires manual lifecycle owner setup
  */
 @AndroidEntryPoint
-class KeyboardService : InputMethodService(), LifecycleOwner {
+class KeyboardService : InputMethodService(), LifecycleOwner, androidx.savedstate.SavedStateRegistryOwner {
 
     @Inject lateinit var viewModel: KeyboardViewModel
 
     private val lifecycleRegistry = LifecycleRegistry(this)
     private val savedStateRegistryController = androidx.savedstate.SavedStateRegistryController.create(this)
+
+    override val savedStateRegistry: androidx.savedstate.SavedStateRegistry
+        get() = savedStateRegistryController.savedStateRegistry
 
     override val lifecycle: Lifecycle
         get() = lifecycleRegistry

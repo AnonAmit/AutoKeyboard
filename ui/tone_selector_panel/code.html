@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoKeyboard Tone Selector</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#9c7eff",
+                    "on-error-container": "#ffb2b9",
+                    "on-tertiary": "#585871",
+                    "primary-dim": "#7e51ff",
+                    "secondary": "#4af8e3",
+                    "primary-container": "#a98fff",
+                    "on-primary": "#340090",
+                    "on-secondary-container": "#dcfff8",
+                    "secondary-fixed-dim": "#33e9d5",
+                    "on-background": "#e5e3ff",
+                    "on-surface": "#e5e3ff",
+                    "on-primary-container": "#280072",
+                    "inverse-primary": "#6834eb",
+                    "outline-variant": "#46465c",
+                    "on-tertiary-fixed": "#3d3d55",
+                    "surface-container": "#17172f",
+                    "on-primary-fixed": "#000000",
+                    "surface-container-high": "#1d1d37",
+                    "primary": "#b6a0ff",
+                    "secondary-container": "#006a60",
+                    "surface-container-highest": "#23233f",
+                    "outline": "#74738b",
+                    "tertiary": "#f2efff",
+                    "surface-bright": "#292948",
+                    "on-error": "#490013",
+                    "background": "#0c0c1f",
+                    "on-surface-variant": "#aaa8c3",
+                    "on-tertiary-container": "#504f68",
+                    "secondary-fixed": "#4af8e3",
+                    "tertiary-fixed-dim": "#d4d1f0",
+                    "surface": "#0c0c1f",
+                    "surface-container-lowest": "#000000",
+                    "surface-variant": "#23233f",
+                    "inverse-surface": "#fcf8ff",
+                    "tertiary-dim": "#d4d1f0",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "on-secondary-fixed": "#00463f",
+                    "tertiary-fixed": "#e2dffe",
+                    "on-tertiary-fixed-variant": "#5a5972",
+                    "error-container": "#a70138",
+                    "surface-container-low": "#111127",
+                    "secondary-dim": "#33e9d5",
+                    "error-dim": "#d73357",
+                    "surface-dim": "#0c0c1f",
+                    "on-secondary": "#005b51",
+                    "tertiary-container": "#e2dffe",
+                    "error": "#ff6e84",
+                    "primary-fixed": "#a98fff",
+                    "on-primary-fixed-variant": "#32008a",
+                    "surface-tint": "#b6a0ff",
+                    "inverse-on-surface": "#53536a",
+                    "key-tiles": "#2D2D44"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-hidden">
+<!-- Header (Suppressed if Task Focused, but kept for Context in this layout) -->
+<header class="bg-[#0c0c1f] flex justify-between items-center px-6 py-4 w-full top-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#b6a0ff]">keyboard</span>
+<span class="text-xl font-extrabold tracking-tight text-[#b6a0ff] plus-jakarta">AutoKeyboard</span>
+</div>
+<button class="hover:bg-[#23233f] transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#b6a0ff]">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas (The Chat Context) -->
+<main class="flex-1 px-6 pt-8 pb-32 overflow-y-auto space-y-6">
+<div class="flex flex-col gap-4">
+<!-- Received Message -->
+<div class="self-start max-w-[80%] bg-surface-container-low p-4 rounded-2xl rounded-bl-none">
+<p class="text-sm text-on-surface leading-relaxed">Hey! Are we still on for dinner tonight? I was thinking that new place downtown. 🍜</p>
+</div>
+<!-- AI Suggestion Prompt (Minimal Underline Style) -->
+<div class="mt-4 border-b border-outline-variant/30 py-2 group focus-within:border-secondary transition-all">
+<span class="text-xs text-secondary font-bold uppercase tracking-widest block mb-1">AI Smart Reply</span>
+<p class="text-on-surface-variant italic">Drafting response...</p>
+</div>
+</div>
+</main>
+<!-- Overlay / Backdrop -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"></div>
+<!-- Tone Selector Panel (Bottom Sheet - 60% Height) -->
+<div class="fixed bottom-0 left-0 w-full h-[60%] bg-[#1d1d37] z-50 rounded-t-[24px] shadow-[0_-8px_32px_rgba(182,160,255,0.08)] flex flex-col transform transition-transform duration-300">
+<!-- Drag Handle -->
+<div class="w-full flex justify-center pt-3 pb-6">
+<div class="w-8 h-1 bg-outline-variant/20 rounded-full"></div>
+</div>
+<div class="px-6 flex-1 overflow-y-auto">
+<header class="mb-6">
+<h2 class="text-lg font-bold plus-jakarta text-on-surface">Select Voice Tone</h2>
+<p class="text-xs text-on-surface-variant mt-1">Personalize how your AI assistant writes.</p>
+</header>
+<!-- Tone Grid -->
+<div class="grid grid-cols-2 gap-3 mb-8">
+<!-- Professional -->
+<button class="h-9 flex items-center justify-center rounded-full border border-primary/40 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors">
+                    Professional
+                </button>
+<!-- Friendly -->
+<button class="h-9 flex items-center justify-center rounded-full border border-primary/40 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors">
+                    Friendly
+                </button>
+<!-- Casual -->
+<button class="h-9 flex items-center justify-center rounded-full border border-primary/40 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors">
+                    Casual
+                </button>
+<!-- Flirty (Selected) -->
+<button class="h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-[#b6a0ff] to-[#7e51ff] text-[#0c0c1f] text-sm font-bold shadow-lg shadow-primary/20">
+                    Flirty
+                </button>
+<!-- Witty -->
+<button class="h-9 flex items-center justify-center rounded-full border border-primary/40 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors">
+                    Witty
+                </button>
+<!-- Poetic -->
+<button class="h-9 flex items-center justify-center rounded-full border border-primary/40 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors">
+                    Poetic
+                </button>
+<!-- Gen-Z -->
+<button class="h-9 flex items-center justify-center rounded-full border border-primary/40 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors">
+                    Gen-Z
+                </button>
+<!-- Formal -->
+<button class="h-9 flex items-center justify-center rounded-full border border-primary/40 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors">
+                    Formal
+                </button>
+</div>
+<!-- Custom Prompt Section -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-primary-fixed-dim">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+<span class="text-xs font-bold uppercase tracking-widest plus-jakarta">Custom Prompt</span>
+</div>
+<div class="bg-surface-container-highest/50 rounded-2xl p-4 border border-outline-variant/15">
+<input class="bg-transparent border-none w-full p-0 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 text-sm italic" placeholder="Talk like my GF..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="p-6 pt-2 bg-[#1d1d37]">
+<button class="w-full h-12 bg-gradient-to-tr from-[#b6a0ff] to-[#7e51ff] text-[#0c0c1f] rounded-full font-bold plus-jakarta active:scale-95 transition-transform shadow-xl shadow-primary/10">
+                Apply Tone
+            </button>
+</div>
+</div>
+<!-- Bottom Navigation (Shared Component) - Active state: psychology (AI/Tone logic) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 bg-[#0c0c1f]/80 backdrop-blur-xl border-t border-[#b6a0ff]/15 shadow-[0_-8px_32px_rgba(182,160,255,0.08)] rounded-t-[24px]">
+<div class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">auto_fix</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">mood</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#b6a0ff] to-[#7e51ff] text-[#0c0c1f] rounded-full p-3 active:scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#2D2D44] p-3 hover:text-[#b6a0ff] transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</nav>
+</body></html>
