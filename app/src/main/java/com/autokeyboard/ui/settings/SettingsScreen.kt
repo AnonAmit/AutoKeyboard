@@ -44,6 +44,10 @@ fun SettingsScreen(
     val stats by viewModel.anonymousStats.collectAsState()
     var expandedProviderId by remember { mutableStateOf<String?>(null) }
 
+    androidx.activity.compose.BackHandler(enabled = expandedProviderId != null) {
+        expandedProviderId = null
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -62,7 +66,13 @@ fun SettingsScreen(
                 .padding(horizontal = 24.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = onBack) {
+                IconButton(onClick = {
+                    if (expandedProviderId != null) {
+                        expandedProviderId = null
+                    } else {
+                        onBack()
+                    }
+                }) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = OnSurface)
                 }
                 Column(modifier = Modifier.padding(start = 8.dp)) {

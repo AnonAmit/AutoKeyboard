@@ -84,22 +84,24 @@ class GeminiProvider(
                 .post(requestBody.toRequestBody("application/json".toMediaType()))
                 .build()
 
-            val response = client.newCall(request).execute()
-            if (!response.isSuccessful) {
-                return@withContext Result.failure(IOException("Gemini API error ${response.code}"))
+            client.newCall(request).execute().use { response ->
+                if (!response.isSuccessful) {
+                    val err = response.body?.string()
+                    return@withContext Result.failure(IOException("Gemini API error ${response.code}: $err"))
+                }
+
+                val body = response.body?.string() ?: return@withContext Result.failure(IOException("Empty response"))
+                val jsonResponse = json.parseToJsonElement(body).jsonObject
+                val text = jsonResponse["candidates"]?.jsonArray
+                    ?.firstOrNull()?.jsonObject
+                    ?.get("content")?.jsonObject
+                    ?.get("parts")?.jsonArray
+                    ?.firstOrNull()?.jsonObject
+                    ?.get("text")?.jsonPrimitive?.content
+                    ?: return@withContext Result.failure(IOException("No text in response"))
+
+                Result.success(ResponseParser.parse(text).variants)
             }
-
-            val body = response.body?.string() ?: return@withContext Result.failure(IOException("Empty response"))
-            val jsonResponse = json.parseToJsonElement(body).jsonObject
-            val text = jsonResponse["candidates"]?.jsonArray
-                ?.firstOrNull()?.jsonObject
-                ?.get("content")?.jsonObject
-                ?.get("parts")?.jsonArray
-                ?.firstOrNull()?.jsonObject
-                ?.get("text")?.jsonPrimitive?.content
-                ?: return@withContext Result.failure(IOException("No text in response"))
-
-            Result.success(ResponseParser.parse(text).variants)
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -171,7 +173,9 @@ class GeminiProvider(
         try {
             val url = "$baseUrl/models?key=$key"
             val request = Request.Builder().url(url).get().build()
-            client.newCall(request).execute().isSuccessful
+            client.newCall(request).execute().use { response ->
+                response.isSuccessful
+            }
         } catch (_: Exception) { false }
     }
 }

@@ -49,6 +49,7 @@ fun KeyboardScreen(
         modifier = modifier
             .fillMaxWidth()
             .background(Background)
+            .navigationBarsPadding() // Protects against overlap with system's gesture bar and IME switcher
     ) {
         // ═══ AI Toolbar Row ═══
         // bg-[#111127] border-t border-outline-variant/15
@@ -78,10 +79,10 @@ fun KeyboardScreen(
                 label = "Tone",
                 onClick = { viewModel.showToneSelector() }
             )
-            // Settings button
+            // Settings button (Icon only to save space)
             ToolbarButton(
                 icon = Icons.Filled.Settings,
-                label = "Settings",
+                label = "",
                 onClick = { /* Open settings */ }
             )
         }
@@ -346,11 +347,13 @@ private fun RowScope.ToolbarButton(
             tint = if (isPrimary) Primary else OnSurfaceVariant,
             modifier = Modifier.size(18.dp)
         )
-        Text(
-            text = label,
-            fontSize = 13.sp,
-            fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
-            color = if (isPrimary) Primary else OnSurfaceVariant
-        )
+        if (label.isNotEmpty()) {
+            Text(
+                text = label,
+                fontSize = 13.sp,
+                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
+                color = if (isPrimary) Primary else OnSurfaceVariant
+            )
+        }
     }
 }

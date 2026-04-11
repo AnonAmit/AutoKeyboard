@@ -42,7 +42,7 @@ class RewriteRepository @Inject constructor(
             return RewriteState.Error("No AI providers configured. Go to Settings to add one.", canRetry = false)
         }
 
-        var lastError: String = "Unknown error"
+        val errors = mutableListOf<String>()
         val startTime = System.currentTimeMillis()
 
         for (providerId in orderedIds) {
@@ -73,13 +73,15 @@ class RewriteRepository @Inject constructor(
                         )
                     }
                 }
-                lastError = result.exceptionOrNull()?.message ?: "Empty response"
+                val errMsg = result.exceptionOrNull()?.message ?: "Empty response"
+                errors.add("[$providerId] $errMsg")
             } catch (e: Exception) {
-                lastError = e.message ?: "Provider $providerId failed"
+                val errMsg = e.message ?: "Failed"
+                errors.add("[$providerId] $errMsg")
             }
         }
 
-        return RewriteState.Error("All providers failed: $lastError")
+        return RewriteState.Error("Providers Failed:\n${errors.joinToString("\n")}")
     }
 
     /**
@@ -96,6 +98,8 @@ class RewriteRepository @Inject constructor(
         val orderedIds = providerOrder.ifEmpty {
             registry.allProviderIds.filter { registry.isProviderConfigured(it) }
         }
+
+        val errors = mutableListOf<String>()
 
         for (providerId in orderedIds) {
             val provider = registry.getProvider(providerId) ?: continue
@@ -126,12 +130,12 @@ class RewriteRepository @Inject constructor(
                     )
                 ))
                 return@flow // Success — stop trying providers
-            } catch (_: Exception) {
-                // Try next provider
+            } catch (e: Exception) {
+                errors.add("[$providerId] ${e.message ?: "Failed"}")
             }
         }
 
-        emit(RewriteState.Error("All providers failed"))
+        emit(RewriteState.Error("Providers Failed:\n${errors.joinToString("\n")}"))
     }
 
     private fun getDefaultEmojis(tone: Tone): List<String> = when (tone) {
