@@ -16,6 +16,7 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoKeyboard"
+        android:enableOnBackInvokedCallback="true"
         tools:targetApi="35">
 
         <!-- Main Activity -->
