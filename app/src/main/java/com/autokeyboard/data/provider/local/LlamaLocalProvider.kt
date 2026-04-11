@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.channels.awaitClose
 
 /**
  * Meta Llama 3.2 on-device via llama.cpp JNI bridge (shared with Qwen).

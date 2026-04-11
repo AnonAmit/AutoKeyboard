@@ -15,6 +15,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import com.autokeyboard.data.model.Tone
 import com.autokeyboard.ui.theme.*
 
@@ -115,7 +117,7 @@ fun ToneSelectorSheet(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Icon(
-                    imageVector = androidx.compose.material.icons.Icons.Filled.Add,
+                    imageVector = Icons.Filled.Add,
                     contentDescription = null,
                     tint = PrimaryFixedDim,
                     modifier = Modifier.size(16.dp)

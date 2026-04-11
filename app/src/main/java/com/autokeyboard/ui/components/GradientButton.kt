@@ -44,9 +44,7 @@ fun GradientButton(
                 spotColor = PrimaryDim.copy(alpha = 0.2f)
             )
             .then(
-                if (enabled) Modifier.then(
-                    androidx.compose.foundation.clickable(onClick = onClick).let { Modifier }
-                ) else Modifier
+                if (enabled) Modifier.clickable(onClick = onClick) else Modifier
             ),
         contentAlignment = Alignment.Center
     ) {

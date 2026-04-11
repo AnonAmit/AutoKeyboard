@@ -6,6 +6,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.*
+import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import com.autokeyboard.ui.keyboard.KeyboardScreen
 import com.autokeyboard.ui.theme.AutoKeyboardTheme
 import dagger.hilt.android.AndroidEntryPoint
