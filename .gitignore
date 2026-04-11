@@ -1,13 +1,50 @@
+# Built artifacts
 *.iml
-.gradle/
-local.properties
-.idea/
+.gradle
+/local.properties
+/.idea
 .DS_Store
-build/
-captures/
-.externalNativeBuild/
-.cxx/
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Kotlin
+*.class
+*.jar
+*.war
+*.ear
+*.aar
+
+# Android
+/app/build/
+/app/release/
+*.apk
+*.ap_
+*.dex
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+*.jks
 *.keystore
-keystore.properties
 google-services.json
-local.defaults.properties
+
+# AI Model weights (large binary files)
+*.bin
+*.gguf
+*.onnx
+!proguard-rules.pro
