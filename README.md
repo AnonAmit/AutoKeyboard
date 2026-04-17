@@ -97,16 +97,6 @@ Then go to **Settings → System → Languages & Input → On-screen keyboard �
 
 ---
 
-## Design System: Neon Nocturne
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| Background | `#0C0C1F` | OLED-safe base |
-| Primary | `#B6A0FF` | Purple accent |
-| Secondary | `#4AF8E3` | Teal accent |
-| Key Tiles | `#2D2D44` | Keyboard keys |
-| On-Surface | `#E5E3FF` | Primary text |
-
 Typography: Plus Jakarta Sans (headlines) + Inter (body)
 
 ---
