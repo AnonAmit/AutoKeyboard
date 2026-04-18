@@ -101,6 +101,3 @@ Typography: Plus Jakarta Sans (headlines) + Inter (body)
 
 ---
 
-## License
-
-MIT License — see [LICENSE](LICENSE) for details.
